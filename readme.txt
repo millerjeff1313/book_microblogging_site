@@ -1,6 +1,6 @@
 This is a microblogging application created using NodeJS! The application theme is a book review blogging site.
 
-In order to run this site, you will need to have a MySQL database that has the tables configured as shown in schema.sql
+In order to run this site, you will need to have a MySQL database that has the tables configured as shown in schema.sql and the details in data.js must be modified to create a connection pool.
 Once the database is set up and all of the required packages are installed, the website should be ready to run.
 To lauch the server, use the following command:
 
