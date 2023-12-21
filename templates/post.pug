@@ -1,0 +1,13 @@
+extends layout 
+
+block head 
+    title New Post
+
+block content
+    h1 Post About a New Book! 
+
+    form(action='/api/post', method='POST', class='form')
+        input(type='text', name='title', placeholder='Book Title', class='title-input')
+        textarea(name='body', placeholder='Book Review', class='content-input', rows='10', cols='80', maxlength='500')
+
+        button(type='submit', class='submit-button') Post

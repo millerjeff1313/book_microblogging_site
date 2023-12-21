@@ -1,0 +1,14 @@
+extends layout 
+
+block head 
+    title Bookclub Login
+
+block content
+    h2 Login
+
+    form(action='/login', method='POST', class='form')
+        input(type='text', name='username', placeholder='Username', class='form-input')
+        input(type='password', name='password', placeholder='Password', class='form-input')
+        button(type='submit', class='submit-button') Login
+
+    a(href='/signup', class='redirect-button') Signup

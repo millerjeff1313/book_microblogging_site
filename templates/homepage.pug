@@ -1,0 +1,47 @@
+extends layout 
+
+block head 
+    title Bookclub
+    <script src="/js/liking.js"></script>
+
+block content
+
+    .sort_by 
+        form(action='/api/sort', method='POST', class='sort-form')
+            if sorting == 'date'
+                select(name='sort', class='sort-select')
+                    option(value='date' selected) Date
+                    option(value='likes') Likes
+            else if sorting == 'likes'
+                select(name='sort', class='sort-select')
+                    option(value='date') Date
+                    option(value='likes' selected) Likes
+            button(type='submit', class='sort-submit') Sort
+
+    .posts
+        each post in posts
+            .post(id="post" + post.id)
+                .banner
+                    .title 
+                        h2= post.title
+                    .user
+                        h3= post.author
+                .body
+                    p= post.body
+                
+                .bottom_banner
+                    .likes 
+                        p= post.likes
+                    .like 
+                        if post.liked 
+                            button(onClick='likePost(' + post.id + ')', class='fa fa-heart')
+                        else
+                            button(onClick='likePost(' + post.id + ')', class='fa fa-heart-o')
+
+    .pagination
+        if page > 1
+            a(href='/?page=' + (page - 1), class='page-button') Previous
+        if page < max_page
+            a(href='/?page=' + (page + 1), class='page-button') Next
+        
+    

@@ -1,0 +1,32 @@
+extends layout 
+
+block head 
+    title Bookclub Account
+    <script src="/js/edit_post.js"></script>
+
+block content
+    h2 Welcome to your account
+    .posts
+        each post in posts
+            .post
+                .banner
+                    .title 
+                        h2= post.title
+                    .user
+                        h3= post.username
+                .body
+                    p= post.body
+                
+                .edit-bar
+                    a(href='/edit_post?post_id=' + post.id, class='edit-button') Edit
+                    button(onclick="deletePost(" + post.id + ")", class='edit-button') Delete
+
+    .pagination
+            if page > 1
+                a(href='/account?page=' + (page - 1), class='page-button') Previous
+            if page < max_page
+                a(href='/account?page=' + (page + 1), class='page-button') Next
+
+
+    form(action='/api/logout', method='POST')
+        button(type='submit', class='redirect-button logout-button') Logout

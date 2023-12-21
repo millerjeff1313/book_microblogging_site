@@ -1,0 +1,14 @@
+extends layout 
+
+block head 
+    title Edit Post 
+
+block content
+    h1 Edit Post 
+
+    form(action='/api/edit_post', method='POST', class='form')
+        input(type='hidden', name='id', value=post.id)
+        input(type='text', name='title', placeholder='Book Title', class='title-input', value=post.title)
+        textarea(name='body', placeholder='Book Review', class='content-input', rows='10', cols='80')= post.body
+
+        button(type='submit', class='submit-button') Save

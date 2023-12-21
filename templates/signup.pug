@@ -1,0 +1,14 @@
+extends layout 
+
+block head 
+    title Bookclub Signup
+
+block content
+    h2 Signup
+
+    form(action='/api/create_account', method='POST', class='form')
+        input(type="text", name="name", placeholder="Name", class="form-input")
+        input(type='text', name='username', placeholder='Username', class='form-input')
+        input(type='password', name='password', placeholder='Password', class='form-input')
+        button(type='submit', class='submit-button') Signup
+    a(href='/login', class='redirect-button') Login
